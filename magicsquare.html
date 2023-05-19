@@ -60,9 +60,9 @@
             // console.log(row["id"] + row["name"] + row["price"]);
             numberTableHtml += `
         <tr>
-          <td>${row["col1"]}</td>
-          <td>${row["col2"]}</td>
-          <td>${row["col3"]}</td>
+          <td style="width:40px;height:40px">${row["col1"]}</td>
+          <td style="width:40px;height:40px">${row["col2"]}</td>
+          <td style="width:40px;height:40px">${row["col3"]}</td>
           <td class="order"></td>
           <td><div class="red" id="kingaku${index}"></div></td>
         </tr>
@@ -74,7 +74,6 @@
       </form>
       `;
           numberArea.innerHTML = numberTableHtml;
-          orderList();
         });
     }
   </script>
