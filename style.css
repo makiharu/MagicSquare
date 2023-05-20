@@ -1,0 +1,26 @@
+.container {
+  font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+  height: 200px;
+}
+
+.container > h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+#numberArea {
+  margin: auto;
+  width: 200px;
+}
+
+#numberTable {
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  outline: dashed 1px black;
+}

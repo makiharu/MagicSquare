@@ -4,77 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
-    <!--製作開始時間2023.5.16-->
-    <h1>魔法陣プログラム</h1>
-    <p>
-      マス目を選択しよう！
-      <select id="numberList">
-        <option value="">選択</option>
-        <option value="3-1">3 * 3 ①</option>
-        <option value="3-2">3 * 3 ②</option>
-        <option value="3-3">3 * 3 ③</option>
-        <option value="4">4 * 4</option>
-        <option value="5">5 * 5</option>
-      </select>
-    </p>
+    <div class="container">
+      <!--製作開始時間2023.5.16-->
+      <h1>魔法陣プログラム</h1>
+      <p>
+        マス目を選択しよう！
+        <select id="numberList">
+          <option value="">選択</option>
+          <option value="3-1">3 * 3 ①</option>
+          <option value="3-2">3 * 3 ②</option>
+          <option value="3-3">3 * 3 ③</option>
+          <option value="4">4 * 4</option>
+          <option value="5">5 * 5</option>
+        </select>
+      </p>
 
-    <div id="numberArea"></div>
+      <div id="numberArea"></div>
+    </div>
   </body>
-  <!-- <script src="magicSquare.js"></script> -->
-  <script>
-    let selectedNum;
-    let numberList = document.getElementById("numberList");
-    numberList.addEventListener("change", () => {
-      selectedNum = event.target.value;
-      let numberForm = document.getElementById("numberForm");
-      if (selectedNum != "" && numberForm) {
-        numberForm.remove();
-
-        getJson(selectedNum);
-      } else if (selectedNum == "" && numberForm) {
-        numberForm.remove();
-      } else if (selectedNum != "" && !numberForm) {
-        getJson(selectedNum);
-      }
-    });
-  </script>
-
-  <script>
-    function getJson(selectedNum) {
-      const url = "magicSquare.json";
-      let numberInfo;
-      let numberArea = document.getElementById("numberArea");
-      let numberTableHtml = `
-      <form action="List.html" id="numberForm">
-            <table id="numberTable">
-      `;
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          numberInfo = data[selectedNum];
-          numberInfo.forEach((row, index) => {
-            // console.log("index:" + index);
-            // console.log(row["id"] + row["name"] + row["price"]);
-            numberTableHtml += `
-        <tr>
-          <td style="width:40px;height:40px">${row["col1"]}</td>
-          <td style="width:40px;height:40px">${row["col2"]}</td>
-          <td style="width:40px;height:40px">${row["col3"]}</td>
-          <td class="order"></td>
-          <td><div class="red" id="kingaku${index}"></div></td>
-        </tr>
-        `;
-          });
-          numberTableHtml += `</table>
-      <div class="red" id="goukei"></div>
-      <button type="submit">送信する</button>
-      </form>
-      `;
-          numberArea.innerHTML = numberTableHtml;
-        });
-    }
-  </script>
+  <script src="magicSquare.js"></script>
 </html>
